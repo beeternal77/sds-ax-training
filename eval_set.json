@@ -46,5 +46,29 @@
     "question": "법인카드 사용 한도는 얼마인가요?",
     "type": "no_answer",
     "expected_source": null
+  },
+  {
+    "id": "d3-01",
+    "question": "p99 지연이 무슨 뜻인가요?",
+    "type": "no_tool",
+    "expected_tools": []
+  },
+  {
+    "id": "d3-02",
+    "question": "payment-api의 현재 오류율과 p99 지연을 알려 주세요.",
+    "type": "single_tool",
+    "expected_tools": ["get_metrics"]
+  },
+  {
+    "id": "d3-03",
+    "question": "payment-api에서 5xx가 급증했습니다. 최근 배포 직후 로그에 무슨 오류가 찍혔는지 확인해 주세요.",
+    "type": "multi_tool",
+    "expected_tools": ["get_deploy_history", "get_logs"]
+  },
+  {
+    "id": "d3-04",
+    "question": "auth-service 최근 배포 이력을 보여 주세요.",
+    "type": "single_tool",
+    "expected_tools": ["get_deploy_history"]
   }
 ]
