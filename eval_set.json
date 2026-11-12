@@ -70,5 +70,17 @@
     "question": "auth-service 최근 배포 이력을 보여 주세요.",
     "type": "single_tool",
     "expected_tools": ["get_deploy_history"]
+  },
+  {
+    "id": "d4-01",
+    "question": "SRV-001 자산 상태를 알려 주세요. 백엔드가 타임아웃을 내면 어떻게 되나요?",
+    "type": "tool_recovery",
+    "expected_tools": ["get_asset_status", "get_asset_status_backup"]
+  },
+  {
+    "id": "d4-02",
+    "question": "SRV-002 상태 조회 중 스키마 오류가 났습니다. 재시도 없이 대체 경로로 상태를 확인해 주세요.",
+    "type": "tool_recovery",
+    "expected_tools": ["get_asset_status", "get_asset_status_backup"]
   }
 ]
