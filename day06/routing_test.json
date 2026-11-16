@@ -1,3 +1,11 @@
 [
-  {"question": "여기에 질문을 쓰세요", "expected": ["log_agent"]}
+  {"question": "payment-api 로그에 최근 어떤 에러가 찍혔나요?", "expected": ["log_agent"]},
+  {"question": "order-service 에서 발생한 exception 스택트레이스를 보여줘", "expected": ["log_agent"]},
+  {"question": "payment-api 의 CPU 사용률과 응답시간 지표를 알려주세요.", "expected": ["metric_agent"]},
+  {"question": "어제 배포 이력과 서버 자산 상태를 확인해 주세요.", "expected": ["metric_agent"]},
+  {"question": "인증서 만료 장애 대응 절차(runbook)가 어떻게 되나요?", "expected": ["runbook_agent"]},
+  {"question": "payment-api 담당자와 최근 유사 인시던트 이력을 찾아줘", "expected": ["runbook_agent"]},
+  {"question": "로그의 에러와 현재 오류율 지표를 함께 봐 주세요.", "expected": ["log_agent", "metric_agent"]},
+  {"question": "로그 에러를 확인하고 대응 절차도 알려줘", "expected": ["log_agent", "runbook_agent"]},
+  {"question": "오늘 점심 메뉴 추천해줘", "expected": []}
 ]
