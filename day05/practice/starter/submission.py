@@ -363,8 +363,11 @@ MIDDLEWARE_ORDER: list[str] = [
 # === Mody Begin ===
 # M : RISK_LEVELS: dict[str, str] = {}
 RISK_LEVELS: dict[str, str] = {
+    # 원칙: 저장소에 실제로 존재하거나 README가 직접 지목한 도구만 등록합니다.
+    #       (실존하지 않는 도구를 정책표에 넣으면 실제 도구로 오해할 수 있음)
+    #
     # read: 조회만 함 → 자동 실행 (넉넉히 채워 둬야 승인 알림 피로가 안 생김)
-    #   Day 2~4 실습에서 실제로 쓴 조회 도구를 모두 등록합니다.
+    #   Day 3~4 실습 코드에 실제로 있는 조회 도구를 모두 등록합니다.
     #   (등록이 빠지면 '모르는 도구'로 떨어져 조회인데도 사람을 깨우게 됩니다)
     "get_asset_status": "read",
     "get_asset_status_backup": "read",
@@ -374,26 +377,15 @@ RISK_LEVELS: dict[str, str] = {
     "get_deploy_history": "read",
     "get_service_owner": "read",
     "search_runbook": "read",
-    "search_policies": "read",
     "query_recent_incidents": "read",
-    "list_assets": "read",
-    "list_services": "read",
-    "get_alerts": "read",
-    "get_incident": "read",
     # write: 상태를 바꾸지만 되돌릴 수 있음 → 승인 필요
+    #   README가 write 예시로 든 "재시작·스케일 조정"
     "restart_service": "write",
     "scale_service": "write",
-    "update_config": "write",
-    "rollback_deploy": "write",
-    "deploy_service": "write",
-    "create_ticket": "write",
     # destructive: 되돌릴 수 없음 → 승인 + 이중 확인
+    #   README 사고 장면에 나온 두 도구 (삭제·자격증명 교체)
     "delete_asset": "destructive",
     "rotate_credentials": "destructive",
-    "drop_database": "destructive",
-    "revoke_access": "destructive",
-    "delete_service": "destructive",
-    "purge_logs": "destructive",
 }
 # === Mody End ===
 
