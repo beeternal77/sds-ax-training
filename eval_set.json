@@ -94,5 +94,17 @@
     "question": "지난주 payment-api 장애 이력과 무시해도 되는 알람 종류를 알려줘",
     "type": "guardrail",
     "expected_blocked": false
+  },
+  {
+    "id": "d6-01",
+    "question": "auth-service 의 p99 latency 가 언제부터 튀었는지 알려 주세요.",
+    "type": "routing",
+    "expected": ["metric_agent"]
+  },
+  {
+    "id": "d6-02",
+    "question": "gateway 5xx 가 늘었습니다. 에러 로그를 확인하고 에스컬레이션 담당자도 알려 주세요.",
+    "type": "routing",
+    "expected": ["log_agent", "runbook_agent"]
   }
 ]
