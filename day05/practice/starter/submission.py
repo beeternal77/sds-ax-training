@@ -364,23 +364,36 @@ MIDDLEWARE_ORDER: list[str] = [
 # M : RISK_LEVELS: dict[str, str] = {}
 RISK_LEVELS: dict[str, str] = {
     # read: 조회만 함 → 자동 실행 (넉넉히 채워 둬야 승인 알림 피로가 안 생김)
+    #   Day 2~4 실습에서 실제로 쓴 조회 도구를 모두 등록합니다.
+    #   (등록이 빠지면 '모르는 도구'로 떨어져 조회인데도 사람을 깨우게 됩니다)
     "get_asset_status": "read",
     "get_asset_status_backup": "read",
+    "get_status": "read",
     "get_metrics": "read",
     "get_logs": "read",
     "get_deploy_history": "read",
+    "get_service_owner": "read",
+    "search_runbook": "read",
     "search_policies": "read",
+    "query_recent_incidents": "read",
     "list_assets": "read",
+    "list_services": "read",
+    "get_alerts": "read",
+    "get_incident": "read",
     # write: 상태를 바꾸지만 되돌릴 수 있음 → 승인 필요
     "restart_service": "write",
     "scale_service": "write",
     "update_config": "write",
     "rollback_deploy": "write",
+    "deploy_service": "write",
+    "create_ticket": "write",
     # destructive: 되돌릴 수 없음 → 승인 + 이중 확인
     "delete_asset": "destructive",
     "rotate_credentials": "destructive",
     "drop_database": "destructive",
     "revoke_access": "destructive",
+    "delete_service": "destructive",
+    "purge_logs": "destructive",
 }
 # === Mody End ===
 
@@ -403,7 +416,10 @@ def needs_approval(tool_name: str, args: dict) -> tuple[bool, str]:
     # D : raise NotImplementedError("needs_approval 을 구현하세요.")
     # === Delete End ===
     # === Insert Begin ===
-    level = RISK_LEVELS.get(tool_name)
+    # 도구 이름 정규화: " Get_Logs " 같은 대소문자·공백 차이로 등급을 놓치지 않게 합니다.
+    # 문자열이 아니면(None 등) 빈 이름 → 아래에서 '모르는 도구'로 승인 필요가 됩니다.
+    name = tool_name.strip() if isinstance(tool_name, str) else ""
+    level = RISK_LEVELS.get(name) or RISK_LEVELS.get(name.lower())
 
     if level == "read":
         return False, f"read: '{tool_name}'은 조회 도구라 승인 없이 자동 실행합니다."
