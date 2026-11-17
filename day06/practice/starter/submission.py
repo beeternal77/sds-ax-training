@@ -238,7 +238,11 @@ _AGENT_PROMPTS: dict[str, str] = {
 def _last_question(messages: list) -> str:
     """상태의 메시지 목록에서 가장 최근 사용자 질문의 텍스트를 꺼냅니다."""
     for msg in reversed(messages or []):
-        if isinstance(msg, HumanMessage) or getattr(msg, "type", "") == "human":
+        # HumanMessage 객체이면 바로 사용자 질문으로 봅니다.
+        if isinstance(msg, HumanMessage):
+            return _text_of(msg)
+        # 클래스가 달라도 type 값이 "human" 이면 사용자 질문으로 봅니다.
+        if getattr(msg, "type", "") == "human":
             return _text_of(msg)
     return ""
 
