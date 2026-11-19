@@ -17,10 +17,16 @@ def _items() -> list[dict]:
 
 
 def test_진입점_app_py_에_POST_query():
-    import app  # mini-prj/app.py
+    # === Mody Begin ===
+    # M :     import app  # mini-prj/app.py
+    import app  # miniprj/app.py
+    # === Mody End ===
 
     routes = {(r.path, m) for r in app.app.routes for m in getattr(r, "methods", set())}
-    assert ("/query", "POST") in routes, "mini-prj/app.py 의 app 에 POST /query 가 없습니다."
+    # === Mody Begin ===
+    # M :     assert ("/query", "POST") in routes, "mini-prj/app.py 의 app 에 POST /query 가 없습니다."
+    assert ("/query", "POST") in routes, "miniprj/app.py 의 app 에 POST /query 가 없습니다."
+    # === Mody End ===
 
 
 def test_평가셋_규격():

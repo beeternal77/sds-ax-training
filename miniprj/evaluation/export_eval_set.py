@@ -8,9 +8,13 @@ eval_set.json 은 과정 공통 형식(저장소 루트 eval_set.json)을 따릅
     {id, question, type, expected_source?, expected_tools?, expected_blocked?}
 여기에 CSV 의 나머지 칸(category, expected_traits, forbidden, note)도 정보 손실 없이 함께 둡니다.
 
-실행 (mini-prj 폴더에서)
+실행 (miniprj 폴더에서)
     python evaluation/export_eval_set.py
 """
+# === Mody Begin ===
+# M : 실행 (mini-prj 폴더에서)
+# 폴더 이름을 제출 규격(miniprj/)에 맞춰 바꿨습니다. 독스트링 안에는 주석을 넣을 수 없어 원문을 바로 아래에 남깁니다.
+# === Mody End ===
 
 from __future__ import annotations
 

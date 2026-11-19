@@ -3,7 +3,7 @@
 요청:  {"question": "사용자 질의"}            (선택: "user_id", 없으면 시연용 더미 사번)
 응답:  {"answer": ..., "contexts": [{doc_id, text}], "trace": [{step, input, output}]}
 
-실행:  uvicorn app:app --reload   (mini-prj 폴더에서, 제출 진입점 mini-prj/app.py 가 이 앱을 다시 내보냅니다)
+실행:  uvicorn app:app --reload   (miniprj 폴더에서, 제출 진입점 miniprj/app.py 가 이 앱을 다시 내보냅니다)
 """
 # === Mody Begin ===
 # M : 실행:  uvicorn src.app:app --reload   (mini-prj 폴더에서)

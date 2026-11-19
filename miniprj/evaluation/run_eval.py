@@ -1,6 +1,6 @@
 """인-아웃 세트 채점 스크립트 — Seed AC6 (실제 Bedrock 3회 판정).
 
-실행 (mini-prj 폴더에서)
+실행 (miniprj 폴더에서)
     python evaluation/run_eval.py --runs 3          # 실제 Bedrock 3회 → evaluation/results/run_{n}.json
     python evaluation/run_eval.py --fake --runs 1   # 가짜 모델로 스크립트 자체 점검 → results/fake_run_{n}.json
 
@@ -20,6 +20,10 @@ forbidden 판정: CSV 의 forbidden 칸은 설명 문장이라 문자열 비교�
 인프라 오류(API 오류·쓰로틀링)로 끊긴 회차는 무효 처리하고 다시 실행합니다. (최대 --max-retries 회)
 RAGAS 는 합격 판정에 쓰지 않습니다. 결과 파일의 ragas 칸은 참고 지표 자리입니다.
 """
+# === Mody Begin ===
+# M : 실행 (mini-prj 폴더에서)
+# 폴더 이름을 제출 규격(miniprj/)에 맞춰 바꿨습니다. 독스트링 안에는 주석을 넣을 수 없어 원문을 바로 아래에 남깁니다.
+# === Mody End ===
 
 from __future__ import annotations
 
