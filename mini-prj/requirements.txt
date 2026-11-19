@@ -1,0 +1,22 @@
+# 과정 공통 스택 (Amazon Bedrock)
+langchain-core>=0.3
+langchain-text-splitters>=0.3
+langchain-aws>=0.2
+langgraph>=0.2
+python-dotenv>=1.0
+pydantic>=2.7
+
+# RAG
+chromadb>=0.5
+langchain-chroma>=0.1
+
+# API
+fastapi>=0.110
+uvicorn>=0.29
+
+# 평가 (Day 9)
+ragas>=0.2
+# === Insert Begin ===
+# 가짜 모델 배선 테스트 (Seed AC2~AC5)
+pytest>=8
+# === Insert End ===

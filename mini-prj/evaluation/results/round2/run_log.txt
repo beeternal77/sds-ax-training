@@ -1,0 +1,4 @@
+[run 1] 20/22 통과 · guardrail 5/5 · 지어낸 답변 0건 → evaluation\results\run_1.json
+[run 2] 21/22 통과 · guardrail 5/5 · 지어낸 답변 0건 → evaluation\results\run_2.json
+[run 3] 20/22 통과 · guardrail 5/5 · 지어낸 답변 0건 → evaluation\results\run_3.json
+판정: 합격

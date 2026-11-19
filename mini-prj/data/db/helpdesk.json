@@ -1,0 +1,40 @@
+{
+  "_note": "교육용 더미 데이터입니다.",
+  "accounts": {
+    "E100001": {
+      "name": "홍길동",
+      "locked": true,
+      "locked_at": "2026-11-18T08:42:00+09:00",
+      "failed_attempts": 5,
+      "password_changed_at": "2026-08-25",
+      "password_expires_at": "2026-11-23"
+    },
+    "E100002": {
+      "name": "김철수",
+      "locked": false,
+      "locked_at": null,
+      "failed_attempts": 0,
+      "password_changed_at": "2026-10-01",
+      "password_expires_at": "2026-12-30"
+    }
+  },
+  "assets": {
+    "E100001": [
+      {"asset_id": "NB-2024-0137", "type": "노트북", "model": "Galaxy Book4 Pro 14", "issued_at": "2024-03-04"}
+    ],
+    "E100002": [
+      {"asset_id": "NB-2023-0981", "type": "노트북", "model": "ThinkPad X1 Carbon Gen 11", "issued_at": "2023-07-10"},
+      {"asset_id": "MN-2023-0412", "type": "모니터", "model": "27인치 QHD", "issued_at": "2023-07-10"}
+    ]
+  },
+  "licenses": {
+    "NB-2024-0137": [
+      {"name": "Microsoft 365 Apps", "expires_at": "2027-03-31"},
+      {"name": "Adobe Acrobat Pro", "expires_at": "2026-11-30"},
+      {"name": "V3 Endpoint Security", "expires_at": "2027-01-15"}
+    ],
+    "NB-2023-0981": [
+      {"name": "Microsoft 365 Apps", "expires_at": "2027-03-31"}
+    ]
+  }
+}

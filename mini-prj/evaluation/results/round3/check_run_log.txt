@@ -1,0 +1,2 @@
+[run 1] 22/22 통과 · guardrail 5/5 · 지어낸 답변 0건 → evaluation\results\run_1.json
+판정: 불합격
