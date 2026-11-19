@@ -1,7 +1,8 @@
 # 미니 PJT: IT 헬프데스크 1차 응대 Agent
 
 > 문서·사번·자산 데이터는 모두 **교육용 더미 데이터입니다.**
-> 서비스 스펙은 [SERVICE.md](SERVICE.md), 인-아웃 세트는 [evaluation/test_queries.csv](evaluation/test_queries.csv) 에 있습니다.
+> 서비스 스펙은 [SERVICE.md](SERVICE.md), 평가셋은 [eval_set.json](eval_set.json) (제출 규격, 22문항)에 있습니다.
+> 평가셋 원본은 [evaluation/test_queries.csv](evaluation/test_queries.csv) 이고, `python evaluation/export_eval_set.py` 로 `eval_set.json` 을 만듭니다.
 
 ## 무엇을 푸나
 
@@ -51,7 +52,7 @@ PII 마스킹 → {answer, contexts, trace}
 ```bash
 cd mini-prj
 pip install -r requirements.txt
-uvicorn src.app:app --reload          # 또는 bash run.sh
+uvicorn app:app --reload              # 또는 python app.py / bash run.sh
 
 curl -X POST localhost:8000/query \
   -H "Content-Type: application/json" \
@@ -101,4 +102,7 @@ python evaluation/run_eval.py --fake --runs 1  # 채점 스크립트 자체 점�
 - [src/tools.py](src/tools.py) — 도메인 도구 (`make_tools`)
 - [src/retriever.py](src/retriever.py) — RAG 파이프라인
 - [src/guardrails.py](src/guardrails.py) — 입력 가드 · PII 마스킹
-- [src/app.py](src/app.py) — `POST /query` 진입점
+- [app.py](app.py) — `POST /query` 제출 진입점 (`src/app.py` 의 앱을 다시 내보냄)
+- [src/app.py](src/app.py) — FastAPI 앱 구현
+- [eval_set.json](eval_set.json) — 제출 평가셋 22문항 (no_answer 4 · guardrail 5)
+- [evaluation/export_eval_set.py](evaluation/export_eval_set.py) — `test_queries.csv` → `eval_set.json` 변환
