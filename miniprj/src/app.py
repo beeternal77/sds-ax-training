@@ -13,8 +13,14 @@
 from __future__ import annotations
 
 from functools import lru_cache
+# === Insert Begin ===
+from pathlib import Path
+# === Insert End ===
 
 from fastapi import FastAPI
+# === Insert Begin ===
+from fastapi.responses import FileResponse
+# === Insert End ===
 from pydantic import BaseModel
 
 from .agent import DEMO_USER_ID, answer
@@ -43,3 +49,16 @@ def _retriever():
 @app.post("/query", response_model=QueryResponse)
 def query(req: QueryRequest) -> dict:
     return answer(req.question, user_id=req.user_id, retriever=_retriever())
+# === Insert Begin ===
+
+
+# 채팅 웹 화면 — 브라우저에서 http://localhost:8000/ 로 엽니다.
+# 화면은 src/static/chat.html 한 파일이고, 질문은 위의 POST /query 로 보냅니다.
+# 화면만 돌려주므로 이 경로는 Bedrock 을 부르지 않습니다.
+CHAT_HTML = Path(__file__).resolve().parent / "static" / "chat.html"
+
+
+@app.get("/", include_in_schema=False)
+def chat_page() -> FileResponse:
+    return FileResponse(CHAT_HTML, media_type="text/html; charset=utf-8")
+# === Insert End ===
